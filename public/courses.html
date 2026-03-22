@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse and enroll in available courses">
+  <title>Courses — Student Course Registration</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <div class="logo-icon">🎓</div>
+        <span>CourseReg</span>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="courses.html" class="active">Courses</a></li>
+        <li><a href="my-enrollments.html">My Enrollments</a></li>
+      </ul>
+      <div class="navbar-user">
+        <span class="user-name" id="userName"></span>
+        <button class="btn-logout" id="logoutBtn">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="page-wrapper">
+      <div class="page-header">
+        <h1>Course Catalog</h1>
+        <p>Browse available courses and enroll with a single click.</p>
+      </div>
+
+      <div id="alert" class="alert"></div>
+
+      <!-- Loading skeleton -->
+      <div id="loadingGrid" class="courses-grid">
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+        <div class="skeleton skeleton-card"></div>
+      </div>
+
+      <!-- Courses grid (filled by JS) -->
+      <div id="coursesGrid" class="courses-grid" style="display:none;"></div>
+
+      <!-- Empty state -->
+      <div id="emptyState" class="empty-state" style="display:none;">
+        <div class="empty-icon">📭</div>
+        <h3>No courses available</h3>
+        <p>Check back later for new course offerings.</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/courses.js"></script>
+</body>
+</html>

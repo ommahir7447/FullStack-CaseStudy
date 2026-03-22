@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student Dashboard - View your enrollment stats and quick actions">
+  <title>Dashboard — Student Course Registration</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <div class="logo-icon">🎓</div>
+        <span>CourseReg</span>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="dashboard.html" class="active">Dashboard</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="my-enrollments.html">My Enrollments</a></li>
+      </ul>
+      <div class="navbar-user">
+        <span class="user-name" id="userName"></span>
+        <button class="btn-logout" id="logoutBtn">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="page-wrapper">
+      <div class="page-header">
+        <h1>Welcome back, <span id="greetName">Student</span>!</h1>
+        <p>Here's an overview of your academic registration.</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon purple">📚</div>
+          <div class="stat-info">
+            <h3 id="totalCourses">—</h3>
+            <p>Available Courses</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">✅</div>
+          <div class="stat-info">
+            <h3 id="myEnrollments">—</h3>
+            <p>My Enrollments</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue">⭐</div>
+          <div class="stat-info">
+            <h3 id="totalCredits">—</h3>
+            <p>Total Credits</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="page-header" style="margin-top:1rem;">
+        <h1 style="font-size:1.3rem;">Quick Actions</h1>
+      </div>
+      <div class="quick-actions">
+        <a href="courses.html" class="action-card">
+          <h3>📖  Browse Courses</h3>
+          <p>Explore available courses and enroll in new ones.</p>
+        </a>
+        <a href="my-enrollments.html" class="action-card">
+          <h3>📋  My Enrollments</h3>
+          <p>View your enrolled courses and manage registrations.</p>
+        </a>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
