@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Student Course Registration System 🎓
 
 A full-stack web application for student course registration built with **Node.js**, **Express.js**, **MongoDB**, and a responsive **HTML5/CSS3/JavaScript** frontend.
@@ -131,3 +132,7 @@ The application features a premium dark-themed UI with glassmorphism effects, an
 ## License
 
 ISC
+=======
+# FullStack-CaseStudy
+Problem Statement: A college wants to develop a Student Course Registration Web Application where students can register, log in, view available courses, and enroll in them online. The system should provide a user-friendly and responsive interface built using HTML5, CSS3, and JavaScript for designing forms, tables, and interactive web pages.
+>>>>>>> b728d5b88da08dded982cac75fbbd07b22eb7ad7
