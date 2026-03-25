@@ -20,6 +20,9 @@
         <li><a href="dashboard.html" class="active">Dashboard</a></li>
         <li><a href="courses.html">Courses</a></li>
         <li><a href="my-enrollments.html">My Enrollments</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="attendance.html">Attendance</a></li>
+        <li><a href="marks.html">Marks</a></li>
       </ul>
       <div class="navbar-user">
         <span class="user-name" id="userName"></span>
@@ -57,6 +60,27 @@
             <p>Total Credits</p>
           </div>
         </div>
+        <div class="stat-card">
+          <div class="stat-icon teal">📊</div>
+          <div class="stat-info">
+            <h3 id="attendancePct">—</h3>
+            <p>Attendance %</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon gold">📝</div>
+          <div class="stat-info">
+            <h3 id="avgMarks">—</h3>
+            <p>Avg Marks</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon pink">🕐</div>
+          <div class="stat-info">
+            <h3 id="todayClasses">—</h3>
+            <p>Today's Classes</p>
+          </div>
+        </div>
       </div>
 
       <!-- Quick Actions -->
@@ -71,6 +95,18 @@
         <a href="my-enrollments.html" class="action-card">
           <h3>📋  My Enrollments</h3>
           <p>View your enrolled courses and manage registrations.</p>
+        </a>
+        <a href="schedule.html" class="action-card">
+          <h3>📅  Class Schedule</h3>
+          <p>View your weekly timetable with room information.</p>
+        </a>
+        <a href="attendance.html" class="action-card">
+          <h3>📊  Attendance</h3>
+          <p>Track your attendance records across all courses.</p>
+        </a>
+        <a href="marks.html" class="action-card">
+          <h3>📝  Marks & Grades</h3>
+          <p>Check your latest marks and academic performance.</p>
         </a>
       </div>
     </main>

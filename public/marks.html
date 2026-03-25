@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="View and track your marks and grades for enrolled courses">
+  <title>Marks — Student Course Registration</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <div class="logo-icon">🎓</div>
+        <span>CourseReg</span>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="my-enrollments.html">My Enrollments</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="attendance.html">Attendance</a></li>
+        <li><a href="marks.html" class="active">Marks</a></li>
+      </ul>
+      <div class="navbar-user">
+        <span class="user-name" id="userName"></span>
+        <button class="btn-logout" id="logoutBtn">Logout</button>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="page-wrapper">
+      <div class="page-header">
+        <h1>📝 Marks & Grades</h1>
+        <p>Real-time view of your academic performance across all courses.</p>
+      </div>
+
+      <div id="alert" class="alert"></div>
+
+      <!-- Live indicator + Seed -->
+      <div class="page-actions">
+        <div class="live-indicator" id="liveIndicator">
+          <span class="live-dot"></span> Real-time updates active
+        </div>
+        <button class="btn btn-primary btn-sm" id="seedMarksBtn" onclick="seedMarks(this)">
+          🎲 Generate Sample Marks
+        </button>
+      </div>
+
+      <!-- Loading -->
+      <div id="loadingState" class="loading-state">
+        <div class="spinner-lg"></div>
+        <p>Loading marks data...</p>
+      </div>
+
+      <!-- Overall Stats -->
+      <div id="overallStats" class="overall-stats" style="display:none;"></div>
+
+      <!-- Marks Cards -->
+      <div id="marksContainer" class="marks-container" style="display:none;"></div>
+
+      <!-- Empty state -->
+      <div id="emptyState" class="empty-state" style="display:none;">
+        <div class="empty-icon">📝</div>
+        <h3>No marks available</h3>
+        <p>Marks will appear here once assessments are graded.</p>
+        <a href="courses.html" class="btn btn-primary">Browse Courses</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/marks.js"></script>
+</body>
+</html>

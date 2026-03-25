@@ -38,6 +38,25 @@ const courseSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
+  schedule: [{
+    day: {
+      type: String,
+      enum: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      required: true
+    },
+    startTime: {
+      type: String,
+      required: true
+    },
+    endTime: {
+      type: String,
+      required: true
+    },
+    room: {
+      type: String,
+      default: 'TBA'
+    }
+  }],
   createdAt: {
     type: Date,
     default: Date.now

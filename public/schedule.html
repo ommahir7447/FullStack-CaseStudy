@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Browse and enroll in available courses">
-  <title>Courses — Student Course Registration</title>
+  <meta name="description" content="View your weekly class schedule and timetable">
+  <title>Schedule — Student Course Registration</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -18,9 +18,9 @@
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">☰</button>
       <ul class="navbar-links" id="navLinks">
         <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="courses.html" class="active">Courses</a></li>
+        <li><a href="courses.html">Courses</a></li>
         <li><a href="my-enrollments.html">My Enrollments</a></li>
-        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="schedule.html" class="active">Schedule</a></li>
         <li><a href="attendance.html">Attendance</a></li>
         <li><a href="marks.html">Marks</a></li>
       </ul>
@@ -33,32 +33,40 @@
     <!-- Main Content -->
     <main class="page-wrapper">
       <div class="page-header">
-        <h1>Course Catalog</h1>
-        <p>Browse available courses and enroll with a single click.</p>
+        <h1>📅 Weekly Class Schedule</h1>
+        <p>Your enrolled courses timetable for the week.</p>
       </div>
 
       <div id="alert" class="alert"></div>
 
-      <!-- Loading skeleton -->
-      <div id="loadingGrid" class="courses-grid">
-        <div class="skeleton skeleton-card"></div>
-        <div class="skeleton skeleton-card"></div>
-        <div class="skeleton skeleton-card"></div>
+      <!-- Live indicator -->
+      <div class="live-indicator" id="liveIndicator">
+        <span class="live-dot"></span> Real-time updates active
       </div>
 
-      <!-- Courses grid (filled by JS) -->
-      <div id="coursesGrid" class="courses-grid" style="display:none;"></div>
+      <!-- Loading -->
+      <div id="loadingState" class="loading-state">
+        <div class="spinner-lg"></div>
+        <p>Loading your schedule...</p>
+      </div>
+
+      <!-- Schedule Grid -->
+      <div id="scheduleContainer" class="schedule-container" style="display:none;">
+        <div class="schedule-grid" id="scheduleGrid"></div>
+      </div>
 
       <!-- Empty state -->
       <div id="emptyState" class="empty-state" style="display:none;">
-        <div class="empty-icon">📭</div>
-        <h3>No courses available</h3>
-        <p>Check back later for new course offerings.</p>
+        <div class="empty-icon">📅</div>
+        <h3>No schedule available</h3>
+        <p>Enroll in courses to see your weekly timetable.</p>
+        <a href="courses.html" class="btn btn-primary">Browse Courses</a>
       </div>
     </main>
   </div>
 
+  <script src="/socket.io/socket.io.js"></script>
   <script src="js/utils.js"></script>
-  <script src="js/courses.js"></script>
+  <script src="js/schedule.js"></script>
 </body>
 </html>
