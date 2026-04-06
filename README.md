@@ -1,7 +1,8 @@
-<<<<<<< HEAD
 # Student Course Registration System 🎓
 
-A full-stack web application for student course registration built with **Node.js**, **Express.js**, **MongoDB**, and a responsive **HTML5/CSS3/JavaScript** frontend.
+**Problem Statement:** A college wants to develop a Student Course Registration Web Application where students can register, log in, view available courses, and enroll in them online. The system provides a user-friendly and responsive interface built using HTML5, CSS3, and JavaScript.
+
+A full-stack web application built with **Node.js**, **Express.js**, **MongoDB**, and a responsive **HTML5/CSS3/JavaScript** frontend.
 
 ## Features
 
@@ -10,9 +11,12 @@ A full-stack web application for student course registration built with **Node.j
 - **Course Enrollment** — Enroll in courses with real-time seat availability tracking
 - **My Enrollments** — View and manage enrolled courses with drop functionality
 - **Dashboard** — Overview stats (available courses, enrollments, total credits)
+- **Schedule & Attendance** — View class schedules and attendance records
+- **Marks / Grades** — View subject-wise marks
 - **Form Validation** — Client-side validation using JavaScript and DOM API
 - **Responsive Design** — Mobile-first dark theme with glassmorphism aesthetics
 - **RESTful APIs** — Clean API design with proper error handling
+- **Real-time Updates** — Socket.IO for live seat availability changes
 
 ## Tech Stack
 
@@ -22,92 +26,120 @@ A full-stack web application for student course registration built with **Node.j
 | Backend | Node.js, Express.js |
 | Database | MongoDB with Mongoose ODM |
 | Authentication | JWT (JSON Web Tokens) + bcrypt |
+| Real-time | Socket.IO |
 | API Communication | Fetch API with JSON |
 | Version Control | Git & GitHub |
-| Development Tools | VS Code, Browser DevTools |
 
 ## Project Structure
 
 ```
-├── server.js                 # Express.js entry point
-├── config/
-│   └── db.js                 # MongoDB connection
-├── models/
-│   ├── Student.js            # Student schema
-│   ├── Course.js             # Course schema
-│   └── Enrollment.js         # Enrollment schema
-├── routes/
-│   ├── auth.js               # Register & Login endpoints
-│   ├── courses.js            # Course CRUD endpoints
-│   └── enrollments.js        # Enrollment CRUD endpoints
-├── middleware/
-│   └── auth.js               # JWT authentication middleware
-└── public/                   # Static frontend
-    ├── index.html            # Login page
-    ├── register.html         # Registration page
-    ├── dashboard.html        # Student dashboard
-    ├── courses.html          # Course catalog
-    ├── my-enrollments.html   # My enrollments
-    ├── css/style.css         # Design system
-    └── js/                   # Frontend JavaScript
-        ├── utils.js          # Shared utilities
-        ├── auth.js           # Login/Register logic
-        ├── dashboard.js      # Dashboard logic
-        ├── courses.js        # Course listing & enrollment
-        └── enrollments.js    # Enrollment management
+Case study/
+├── backend/
+│   ├── server.js              # Express.js entry point
+│   ├── .env.example           # ← Copy this to .env and fill in your values
+│   ├── config/
+│   │   └── db.js              # MongoDB connection
+│   ├── models/
+│   │   ├── Student.js         # Student schema
+│   │   ├── Course.js          # Course schema
+│   │   └── Enrollment.js      # Enrollment schema
+│   ├── routes/
+│   │   ├── auth.js            # Register & Login endpoints
+│   │   ├── courses.js         # Course CRUD endpoints
+│   │   ├── enrollments.js     # Enrollment CRUD endpoints
+│   │   ├── schedule.js        # Schedule endpoints
+│   │   ├── attendance.js      # Attendance endpoints
+│   │   └── marks.js           # Marks endpoints
+│   └── middleware/
+│       └── auth.js            # JWT authentication middleware
+└── frontend/                  # Static frontend files
 ```
 
-## Setup & Installation
+---
+
+## ⚙️ Setup & Installation
 
 ### Prerequisites
+
 - [Node.js](https://nodejs.org/) (v18+)
-- [MongoDB](https://www.mongodb.com/) (local or Atlas)
+- [MongoDB](https://www.mongodb.com/) running locally **or** a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) cloud URI
 - [Git](https://git-scm.com/)
 
 ### Steps
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/student-course-registration.git
-   cd student-course-registration
-   ```
+#### 1. Clone the repository
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+```bash
+git clone https://github.com/ommahir7447/FullStack-CaseStudy.git
+cd FullStack-CaseStudy
+```
 
-3. **Configure environment variables**
-   Create a `.env` file:
-   ```
-   PORT=5000
-   MONGO_URI=mongodb://localhost:27017/student_course_registration
-   JWT_SECRET=your_secret_key_here
-   ```
+#### 2. Install backend dependencies
 
-4. **Start the server**
-   ```bash
-   npm start
-   ```
+```bash
+cd backend
+npm install
+```
 
-5. **Open in browser**
-   Navigate to `http://localhost:5000`
+#### 3. ⚠️ Create the `.env` file (REQUIRED)
 
-6. **Seed sample courses**
-   The app auto-seeds courses on first visit to the Courses page, or you can call:
-   ```
-   POST http://localhost:5000/api/courses/seed
-   ```
+The `.env` file is **not included in the repository** for security reasons.  
+You must create it manually inside the `backend/` folder.
+
+```bash
+# Inside the backend/ directory, create a file named .env
+```
+
+Copy the contents of `backend/.env.example` into your new `backend/.env` file:
+
+```env
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/student_course_registration
+JWT_SECRET=mysecretkey123
+CORS_ORIGIN=http://localhost
+```
+
+> **If you have a MongoDB Atlas URI**, replace `MONGO_URI` with your Atlas connection string:
+> ```
+> MONGO_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/student_course_registration
+> ```
+
+#### 4. Start the backend server
+
+```bash
+# Inside the backend/ directory
+npm start
+```
+
+You should see:
+```
+Server running on http://localhost:5000
+✅ MongoDB Connected: localhost
+```
+
+#### 5. Open the frontend
+
+Open `frontend/index.html` in your browser, **or** navigate to `http://localhost:5000` if the backend serves static files.
+
+#### 6. Seed sample courses (optional)
+
+```
+POST http://localhost:5000/api/courses/seed
+```
+
+---
 
 ## API Endpoints
 
 ### Authentication
+
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | POST | `/api/auth/register` | Register a new student |
 | POST | `/api/auth/login` | Login and receive JWT token |
 
 ### Courses
+
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | GET | `/api/courses` | Get all courses |
@@ -115,15 +147,20 @@ A full-stack web application for student course registration built with **Node.j
 | POST | `/api/courses/seed` | Seed sample courses |
 
 ### Enrollments (Protected — requires JWT)
+
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | POST | `/api/enrollments` | Enroll in a course |
 | GET | `/api/enrollments/my` | Get my enrollments |
 | DELETE | `/api/enrollments/:id` | Drop a course |
 
-## Screenshots
+### Health Check
 
-The application features a premium dark-themed UI with glassmorphism effects, animated backgrounds, and responsive design.
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/health` | Check server status |
+
+---
 
 ## Author
 
@@ -132,7 +169,3 @@ The application features a premium dark-themed UI with glassmorphism effects, an
 ## License
 
 ISC
-=======
-# FullStack-CaseStudy
-Problem Statement: A college wants to develop a Student Course Registration Web Application where students can register, log in, view available courses, and enroll in them online. The system should provide a user-friendly and responsive interface built using HTML5, CSS3, and JavaScript for designing forms, tables, and interactive web pages.
->>>>>>> b728d5b88da08dded982cac75fbbd07b22eb7ad7
